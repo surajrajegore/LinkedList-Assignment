@@ -55,8 +55,7 @@ class List<T> {
 
         Node<T> X = head;
 
-        if (X == null)
-            return S + "}";
+        if (X == null) return S + "}";
 
         while (X.next != null) {
             S += String.valueOf(X.data) + "->";
@@ -134,7 +133,28 @@ class List<T> {
         len--;
     }
 
+    public int search(T data) {
 
+        if (head == null) {
+            return -1;
+        }
+
+        int index = 0;
+        Node<T> temp = head;
+
+        while (temp != null) {
+
+
+            if (temp.data == data) {
+                return index;
+            }
+
+            index++;
+            temp = temp.next;
+        }
+
+        return -1;
+    }
 }
 
 public class LinkedList {
@@ -143,8 +163,12 @@ public class LinkedList {
         list1.addNode(56);
         list1.addNode(70);
         list1.insertNthPosition(30, 2);
-        System.out.println("list before delete " + list1);
-        list1.deleteLast();
-        System.out.println("list after delete " + list1);
+        int data = 30;
+        int ans = list1.search(30);
+
+        if (ans == 30) {
+            System.out.println("Element not found in the Linked List");
+        } else System.out.println("Element found in the Linked List at index " + ans);
     }
 }
+
