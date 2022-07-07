@@ -78,15 +78,39 @@ class List<T> {
         }
         len++;
     }
+    public void insertNthPosition(int data, int position) {
+        Node newNode = new Node(data);
+
+        if (position <= len && position >= 1) {
+            if (position == 1) {
+                insertFirst(data);
+            } else {
+
+                int nodeCounter = 1;
+                Node temp = head;
+                Node previous = null;
+                while (nodeCounter != position) {
+                    previous = temp;
+                    temp = temp.next;
+                    nodeCounter++;
+                }
+                previous.next = newNode;
+                newNode.next = temp;
+            }
+            len++;
+        } else {
+            System.out.println("Invalid Position");
+        }
+    }
 
 }
 
 public class LinkedList {
     public static void main(String[] args) {
         List<Integer> list1 = new List<Integer>();
-        list1.insertLast(56);
-        list1.insertLast(30);
-        list1.insertLast(70);
+        list1.addNode(56);
+        list1.addNode(70);
+        list1.insertNthPosition(30,2);
         System.out.println("Linkedlist is: " + list1);
     }
 }
