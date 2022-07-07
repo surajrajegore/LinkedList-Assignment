@@ -47,7 +47,6 @@ class List<T> {
         }
         len++;
     }
-
     public String toString() {
 
         String S = "{";
@@ -65,14 +64,29 @@ class List<T> {
         S += String.valueOf(X.data);
         return S + "}";
     }
+    public void insertLast(int data) {
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node temp = head;
+            while (temp.next != null) {
+                temp = temp.next;
+            }
+            temp.next = newNode;
+
+        }
+        len++;
+    }
+
 }
 
 public class LinkedList {
     public static void main(String[] args) {
         List<Integer> list1 = new List<Integer>();
-        list1.insertFirst(70);
-        list1.insertFirst(30);
-        list1.insertFirst(56);
+        list1.insertLast(56);
+        list1.insertLast(30);
+        list1.insertLast(70);
         System.out.println("Linkedlist is: " + list1);
     }
 }
