@@ -102,6 +102,17 @@ class List<T> {
             System.out.println("Invalid Position");
         }
     }
+    public void deleteFirst() {
+        if (head == null) {
+            System.out.println("List Is Empty");
+        } else {
+            Node temp = head;
+            head = head.next;
+            temp = null;
+        }
+        len--;
+    }
+
 
 }
 
@@ -111,6 +122,8 @@ public class LinkedList {
         list1.addNode(56);
         list1.addNode(70);
         list1.insertNthPosition(30,2);
-        System.out.println("Linkedlist is: " + list1);
+        System.out.println("list before delete "+list1);
+        list1.deleteFirst();
+        System.out.println("list after delete " + list1);
     }
 }
