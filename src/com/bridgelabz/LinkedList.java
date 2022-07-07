@@ -37,6 +37,7 @@ class List<T> {
 
         len++;
     }
+
     public void insertFirst(int data) {
         Node newNode = new Node(data);
         if (head == null) {
@@ -47,6 +48,7 @@ class List<T> {
         }
         len++;
     }
+
     public String toString() {
 
         String S = "{";
@@ -64,6 +66,7 @@ class List<T> {
         S += String.valueOf(X.data);
         return S + "}";
     }
+
     public void insertLast(int data) {
         Node newNode = new Node(data);
         if (head == null) {
@@ -78,6 +81,7 @@ class List<T> {
         }
         len++;
     }
+
     public void insertNthPosition(int data, int position) {
         Node newNode = new Node(data);
 
@@ -102,12 +106,29 @@ class List<T> {
             System.out.println("Invalid Position");
         }
     }
+
     public void deleteFirst() {
         if (head == null) {
             System.out.println("List Is Empty");
         } else {
             Node temp = head;
             head = head.next;
+            temp = null;
+        }
+        len--;
+    }
+
+    public void deleteLast() {
+        if (head == null) {
+            System.out.println("List IS Empty");
+        } else {
+            Node temp = head;
+            Node previous = null;
+            while (temp.next != null) {
+                previous = temp;
+                temp = temp.next;
+            }
+            previous.next = null;
             temp = null;
         }
         len--;
@@ -121,9 +142,9 @@ public class LinkedList {
         List<Integer> list1 = new List<Integer>();
         list1.addNode(56);
         list1.addNode(70);
-        list1.insertNthPosition(30,2);
-        System.out.println("list before delete "+list1);
-        list1.deleteFirst();
+        list1.insertNthPosition(30, 2);
+        System.out.println("list before delete " + list1);
+        list1.deleteLast();
         System.out.println("list after delete " + list1);
     }
 }
