@@ -155,23 +155,57 @@ class List<T> {
 
         return -1;
     }
+    public int size(){
+        Node temp = head;
+        int counter = 1;
+        while (temp.next != null){
+            temp = temp.next;
+            counter++;
+        }
+        return counter;
+    }
+    public void deleteNthPosition(int position) {
+        if (position <= len && position >= 1) {
+            if (position == 1) {
+                deleteFirst();
+            } else {
+                Node previous = null;
+                Node temp = head;
+                int nodeCounter = 1;
+                while (nodeCounter != position) {
+                    previous = temp;
+                    temp = temp.next;
+                    nodeCounter++;
+                }
+                previous.next = temp.next;
+                temp = null;
+            }
+            len--;
+        } else {
+            System.out.println("Invalid Input");
+        }
+    }
+
 }
 
 public class LinkedList {
     public static void main(String[] args) {
         List<Integer> list1 = new List<Integer>();
         list1.addNode(56);
+        list1.addNode(30);
+        list1.addNode(40);
         list1.addNode(70);
-        list1.insertNthPosition(30, 2);
-        int data = 30;
-        int ans = list1.search(30);
+        int data = 40;
+        int ans = list1.search(data);
 
-        if (ans == 30) {
+        if (ans == data) {
             System.out.println("Element not found in the Linked List");
         } else {
             System.out.println("Element found in the Linked List at index " + ans);
-            list1.insertNthPosition(40,ans + 2);
-            System.out.println("after element search insert element list is :"+list1);
+            System.out.println("size of list is "+list1.size());
+            list1.deleteNthPosition(ans + 1);
+            System.out.println("After delete:"+list1);
+            System.out.println("after delete size "+list1.size());
         }
     }
 }
