@@ -168,7 +168,11 @@ public class LinkedList {
 
         if (ans == 30) {
             System.out.println("Element not found in the Linked List");
-        } else System.out.println("Element found in the Linked List at index " + ans);
+        } else {
+            System.out.println("Element found in the Linked List at index " + ans);
+            list1.insertNthPosition(40,ans + 2);
+            System.out.println("after element search insert element list is :"+list1);
+        }
     }
 }
 
